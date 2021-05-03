@@ -5,6 +5,7 @@
 **Dataset**: data/Jokes/raw/raw_jokes
 - This is a dataset of 231657 jokes. I only used the first 10000 lines/jokes to train the RNN.
 - I preprocessed the 10000 jokes using the commands from download_data.sh.
+
 **Commands**: 
 - cat ./data/Jokes/raw/raw_jokes.txt | python ./scripts/preprocess_raw.py > ./data/Jokes/raw/jokes_cleaned.txt
 - cat ./data/Jokes/raw/jokes_cleaned.txt | python ./scripts/preprocess.py --vocab-size 5000 --tokenize --lang "en" > ./data/Jokes/raw/preprocessed_jokes.txt
@@ -13,6 +14,7 @@
 - tail -n 9000 ./data/Jokes/raw/preprocessed_jokes.txt > ./data/Jokes/train.txt
 
 **Training**: I trained 5 models with train.sh with the dropouts 0, 0.3, 0.4, 0.5, 0.7
+
 **Changes**:
 - adapted --data path to data/Jokes
 - I increased the number of threads to try and increase the run time of the script
@@ -20,6 +22,7 @@
 - For each model i changed the --output to one of the values: 0, 0.3, 0.4, 0.5, 0.7 and saved each model as jokes_model_0, jokes_model_03 etc.
 
 **Generating**: I generated different samples by using and adapting generate.sh
+
 **Changes**:
 - --data path to data/Jokes
 - changes to --checkpoint to the different models in model/
