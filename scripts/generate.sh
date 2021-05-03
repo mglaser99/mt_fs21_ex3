@@ -15,8 +15,8 @@ device=""
 
 (cd $tools/pytorch-examples/word_language_model &&
     CUDA_VISIBLE_DEVICES=$device OMP_NUM_THREADS=$num_threads python generate.py \
-        --data $data/trump \
+        --data $data/Jokes \
         --words 100 \
-        --checkpoint $models/model.pt \
-        --outf $samples/sample
+        --checkpoint $models/jokes_model_05.pt \
+        --outf $samples/samples_05/sample_5
 )
