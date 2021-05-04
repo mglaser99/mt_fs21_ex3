@@ -9,7 +9,7 @@ tools=$base/tools
 
 mkdir -p $models
 
-num_threads=15
+num_threads=10
 device=""
 
 SECONDS=0
