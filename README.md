@@ -2,36 +2,18 @@
 
 ## 2 Training a recurrent neural network language model
 
-**Dataset**: data/Jokes/raw/raw_jokes
-- This is a dataset of 231657 jokes. I only used the first 10000 lines/jokes to train the RNN.
-- I preprocessed the 10000 jokes using the commands from download_data.sh.
+For the initial setup of this repository you can follow the original steps for the setup below. I made the necessary changes to the install_packages.sh and download_data.sh files. I added the file raw_jokes.txt to the repository because the original dataset (https://www.kaggle.com/abhinavmoudgil95/short-jokes) was in .csv format and I extracted the data outside the repository.
 
-**Commands**: 
-- cat ./data/Jokes/raw/raw_jokes.txt | python ./scripts/preprocess_raw.py > ./data/Jokes/raw/jokes_cleaned.txt
-- cat ./data/Jokes/raw/jokes_cleaned.txt | python ./scripts/preprocess.py --vocab-size 5000 --tokenize --lang "en" > ./data/Jokes/raw/preprocessed_jokes.txt
-- head -n 500 ./data/Jokes/raw/preprocessed_jokes.txt > ./data/Jokes/valid.txt
-- head -n 1000 ./data/Jokes/raw/preprocessed_jokes.txt | tail -n 500 > ./data/Jokes/test.txt
-- tail -n 9000 ./data/Jokes/raw/preprocessed_jokes.txt > ./data/Jokes/train.txt
+I trained 5 models with dropout 0, 0.3, 0.4, 0.5, 0.7. The train.sh is set up to train the 0.5 model and save it as models/jokes_model_05.pt. To train and save the other models train.sh needs to be adapted with the respective dropout.
 
-**Training**: I trained 5 models with train.sh with the dropouts 0, 0.3, 0.4, 0.5, 0.7
-
-**Changes**:
-- adapted --data path to data/Jokes
-- I increased the number of threads to try and increase the run time of the script
-- I changed the embedding size and the hidden layers to 250
-- For each model i changed the --output to one of the values: 0, 0.3, 0.4, 0.5, 0.7 and saved each model as jokes_model_0, jokes_model_03 etc.
-
-**Generating**: I generated different samples by using and adapting generate.sh
-
-**Changes**:
-- --data path to data/Jokes
-- changes to --checkpoint to the different models in model/
-- changes to --outf for the different outfiles in samples/
+The generate.sh script will generate a text of 50 tokens with the joeks_model_5.pt model.
 
 ## 3 Implement a command line prompt for text generation
 
-Command line prompt example from inside the mt_fs21_ex3 directory:
--  python3 examples/word_language_model/generate.py --data ./data/Jokes --checkpoint ./models/jokes_model_05.pt --outf ./samples/generated_knock3.txt --words 50 --input "Knock knock"
+The examples repo with the adapted generate.py file gets cloned into tools in the install_packages.sh script. Below is an example command line prompt to generate a text with user input:
+
+	python3 ./tools/examples/word_language_model/generate.py --data ./data/Jokes --checkpoint ./models/jokes_model_05.pt --outf ./samples/generated_knock.txt --words 50 --input "Knock knock"
+
 
 # Pytorch RNN Language Models
 
