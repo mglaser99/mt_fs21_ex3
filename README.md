@@ -6,7 +6,7 @@ For the initial setup of this repository you can follow the original steps for t
 
 I trained 5 models with dropout 0, 0.3, 0.4, 0.5, 0.7. The train.sh is set up to train the 0.5 model and save it as models/jokes_model_05.pt. To train and save the other models train.sh needs to be adapted with the respective dropout.
 
-The generate.sh script will generate a text of 50 tokens with the joeks_model_5.pt model.
+The generate.sh script will generate a text of 50 tokens with the jokes_model_5.pt model.
 
 ## 3 Implement a command line prompt for text generation
 
