@@ -10,7 +10,7 @@ The generate.sh script will generate a text of 50 tokens with the jokes_model_5.
 
 ## 3 Implement a command line prompt for text generation
 
-The examples repo with the adapted generate.py file gets cloned into tools in the install_packages.sh script. Below is an example command line prompt to generate a text with user input:
+The examples repo with the adapted generate.py file gets cloned into the tools folder of the mt_fs21_ex3 repo from task 1 with the install_packages.sh script. Below is an example command line prompt to generate a text with user input:
 
 	python3 ./tools/examples/word_language_model/generate.py --data ./data/Jokes --checkpoint ./models/jokes_model_05.pt --outf ./samples/generated_knock.txt --words 50 --input "Knock knock"
 
